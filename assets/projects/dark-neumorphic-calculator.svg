@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_dark-neumorphic-calculator" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="60%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="bar_dark-neumorphic-calculator" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <pattern id="grid_dark-neumorphic-calculator" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1e293b" stroke-width="0.7"/>
+    </pattern>
+    <filter id="glow_dark-neumorphic-calculator" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="500" rx="16" fill="url(#bg_dark-neumorphic-calculator)"/>
+  <rect width="800" height="500" rx="16" fill="url(#grid_dark-neumorphic-calculator)" opacity="0.4"/>
+
+  <!-- Top Window Header Bar -->
+  <rect x="0" y="0" width="800" height="48" rx="16" fill="#0f172a" opacity="0.8"/>
+  <rect x="0" y="32" width="800" height="16" fill="#0f172a" opacity="0.8"/>
+  <circle cx="28" cy="24" r="6" fill="#ef4444"/>
+  <circle cx="48" cy="24" r="6" fill="#f59e0b"/>
+  <circle cx="68" cy="24" r="6" fill="#10b981"/>
+  
+  <text x="400" y="29" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="13" text-anchor="middle">portfolio@marwan ~ /projects/dark-neumorphic-calculator</text>
+
+  <!-- Ambient Glow in Center -->
+  <circle cx="400" cy="270" r="140" fill="#8b5cf6" opacity="0.08" filter="url(#glow_dark-neumorphic-calculator)"/>
+
+  <!-- Main Card Content Window -->
+  <g transform="translate(60, 80)">
+    <!-- Window Frame -->
+    <rect width="680" height="360" rx="12" fill="#0d1424" stroke="#1e293b" stroke-width="1.5"/>
+    
+    <!-- Top accent border line -->
+    <rect x="0" y="0" width="680" height="3" fill="url(#bar_dark-neumorphic-calculator)"/>
+
+    <!-- Category Pill -->
+    <rect x="36" y="32" width="160" height="28" rx="14" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-opacity="0.4"/>
+    <text x="116" y="50" fill="#a78bfa" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" text-anchor="middle">FRONTEND / UI</text>
+
+    <!-- Icon Box -->
+    <rect x="580" y="32" width="56" height="56" rx="10" fill="#131d33" stroke="#25324d" stroke-width="1"/>
+    <g transform="translate(596, 48) scale(1)">
+      <rect x="4" y="2" width="16" height="20" rx="2" fill="none" stroke="#8b5cf6" stroke-width="2"/><line x1="8" y1="6" x2="16" y2="6" stroke="#8b5cf6" stroke-width="2"/><circle cx="8" cy="11" r="1" fill="#8b5cf6"/><circle cx="12" cy="11" r="1" fill="#8b5cf6"/><circle cx="16" cy="11" r="1" fill="#8b5cf6"/><circle cx="8" cy="15" r="1" fill="#8b5cf6"/><circle cx="12" cy="15" r="1" fill="#8b5cf6"/><circle cx="16" cy="15" r="1" fill="#8b5cf6"/>
+    </g>
+
+    <!-- Project Title -->
+    <text x="36" y="105" fill="#f8fafc" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="30" font-weight="700">Dark Neumorphic Calculator</text>
+    
+    <!-- Subtitle / Concept -->
+    <text x="36" y="135" fill="#94a3b8" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15">Soft Dark Shadows & JS Arithmetic</text>
+
+    <!-- Divider -->
+    <line x1="36" y1="165" x2="644" y2="165" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Key Highlights / Architecture points -->
+    <g transform="translate(36, 195)">
+      <circle cx="6" cy="6" r="3" fill="#8b5cf6"/>
+      <text x="22" y="10" fill="#cbd5e1" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14">Neumorphic Dual-Shadow Inset Elevations</text>
+      
+      <circle cx="6" cy="42" r="3" fill="#8b5cf6"/>
+      <text x="22" y="46" fill="#cbd5e1" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14">Floating Point Math Precision Engine</text>
+      
+      <circle cx="6" cy="78" r="3" fill="#8b5cf6"/>
+      <text x="22" y="82" fill="#cbd5e1" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14">Responsive Keyboard & Touch Controls</text>
+    </g>
+
+    <!-- Interactive Badge Bottom -->
+    <rect x="36" y="305" width="130" height="30" rx="6" fill="#1e293b" stroke="#334155"/>
+    <text x="101" y="324" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">&lt;code /&gt; Preview</text>
+  </g>
+</svg>

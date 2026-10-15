@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marwan Bouhamid | Full-Stack Web Developer</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Portfolio of Marwan Bouhamid, Junior Full-Stack Web Developer based in Tanger, Morocco. Specializing in Laravel, JavaScript, responsive web applications, and freelance client solutions.">
+  <meta name="keywords" content="Marwan Bouhamid, Full-Stack Developer, Web Developer Tanger, Laravel Developer Morocco, JavaScript, Solicode">
+  <meta name="author" content="Marwan Bouhamid">
+  <link rel="canonical" href="https://marwanbouhamid.netlify.app/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marwanbouhamid.netlify.app/">
+  <meta property="og:title" content="Marwan Bouhamid | Full-Stack Web Developer">
+  <meta property="og:description" content="Web development student at Solicode building web applications with Laravel and JavaScript. Make something good from you.">
+  <meta property="og:image" content="assets/images/profile-placeholder.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Marwan Bouhamid | Full-Stack Web Developer">
+  <meta property="twitter:description" content="Portfolio of Marwan Bouhamid, Full-Stack Web Developer in Tanger, Morocco.">
+  <meta property="twitter:image" content="assets/images/profile-placeholder.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="page-home">
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Particle Canvas -->
+  <canvas id="canvas-bg" aria-hidden="true"></canvas>
+
+  <!-- Terminal Style Preloader (max ~1.5s, skippable, once per session) -->
+  <div id="preloader" role="dialog" aria-label="Loading workspace">
+    <div class="terminal-box">
+      <div class="terminal-topbar">
+        <span class="term-dot red"></span>
+        <span class="term-dot yellow"></span>
+        <span class="term-dot green"></span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="term-prompt">$</span>
+          <span data-i18n="preloader_status">INITIALIZING WORKSPACE...</span>
+        </div>
+        <div class="terminal-line">
+          <span class="term-prompt">&gt;</span>
+          <span class="term-typed" id="term-typed-text"></span>
+          <span class="cursor-blink"></span>
+        </div>
+        <div class="preloader-skip" data-i18n="preloader_skip">Press ESC or click to skip</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Marwan Bouhamid Homepage">
+        <span class="logo-bracket">&lt;</span>MB <span class="logo-dot"></span><span class="logo-bracket">&gt;</span>
+      </a>
+
+      <!-- Desktop & Mobile Nav Menu -->
+      <div class="nav-menu-wrapper" id="primary-nav-menu">
+        <nav class="site-nav" role="navigation" aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
+            <li class="nav-item"><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li class="nav-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li class="nav-item"><a href="#github" data-i18n="nav_activity">Activity</a></li>
+            <li class="nav-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <!-- Language Selector -->
+          <div class="lang-selector">
+            <button type="button" class="btn-icon btn-lang-toggle" aria-label="Select Language" title="Select Language">
+              <span class="current-lang-code" style="font-family: var(--font-code); font-size: 11px; font-weight: 700;">EN</span>
+            </button>
+            <div class="lang-dropdown" role="menu">
+              <button type="button" class="lang-option active" data-lang="en">English (EN)</button>
+              <button type="button" class="lang-option" data-lang="fr">Français (FR)</button>
+              <button type="button" class="lang-option" data-lang="ar">العربية (AR)</button>
+            </div>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button type="button" class="btn-icon theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-icon"></span>
+          </button>
+
+          <!-- CV Download Button (TODO: File will be added by user) -->
+          <div class="magnetic-btn">
+            <a href="assets/Marwan_Bouhamid_CV.pdf" class="btn btn-secondary btn-sm" download="Marwan_Bouhamid_CV.pdf" data-i18n="nav_cv">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-toggle" aria-label="Open Navigation Menu" aria-controls="primary-nav-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          
+          <div class="hero-greeting-pill reveal">
+            <span data-i18n="hero_greeting">Hello, I am</span>
+            <span class="location-pin" title="Click for easter egg">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span data-i18n="hero_location">Tanger, Morocco</span>
+            </span>
+          </div>
+
+          <h1 class="hero-name reveal reveal-delay-1" id="hero-title">
+            <span class="kinetic-text-wrap"><span class="kinetic-line" data-i18n="hero_name">Marwan Bouhamid</span></span>
+          </h1>
+
+          <div class="hero-title reveal reveal-delay-2">
+            <span class="code-bracket">&lt;</span><span data-i18n="hero_title">Full-Stack Web Developer</span><span class="code-bracket">/&gt;</span>
+          </div>
+
+          <blockquote class="hero-tagline reveal reveal-delay-2" data-i18n="hero_tagline">
+            "Make something good from you"
+          </blockquote>
+
+          <p class="hero-bio reveal reveal-delay-3" data-i18n="hero_bio">
+            Web development student at Solicode (2025–2026), building responsive web applications with Laravel and modern JavaScript. Open for freelance opportunities and junior full-stack roles.
+          </p>
+
+          <div class="hero-ctas reveal reveal-delay-4">
+            <div class="magnetic-btn">
+              <a href="contact.html" class="btn btn-primary" data-i18n="hero_cta_contact">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span>Contact Me</span>
+              </a>
+            </div>
+
+            <div class="magnetic-btn">
+              <a href="assets/Marwan_Bouhamid_CV.pdf" class="btn btn-secondary" download="Marwan_Bouhamid_CV.pdf" data-i18n="hero_cta_cv">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Download CV</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Photo with Tech Frame and Parallax -->
+        <div class="hero-visual reveal reveal-delay-2">
+          <div class="photo-frame-wrapper">
+            <div class="photo-inner">
+              <img src="assets/images/profile.jpg" alt="Marwan Bouhamid portrait" class="profile-photo" id="hero-profile-img" onerror="this.onerror=null; this.src='assets/images/profile-placeholder.png'">
+            </div>
+            <!-- Floating Decorative Tech Badges -->
+            <div class="tech-floating-tag tag-laravel float-ambient">
+              <span>⚡</span> Laravel
+            </div>
+            <div class="tech-floating-tag tag-js float-ambient">
+              <span>JS</span> JavaScript
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Infinite Skills Marquee -->
+    <section class="marquee-section" aria-label="Technologies Marquee">
+      <div class="marquee-title-wrapper">
+        <span class="marquee-title" data-i18n="marquee_title">CORE TECHNOLOGIES &amp; TOOLS</span>
+      </div>
+      <div class="marquee-track">
+        <!-- List repeated for seamless infinite scrolling -->
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF2D20"><path d="M22.062 6.55a.862.862 0 0 0-.412-.425L13.88.587a.89.89 0 0 0-.825 0L5.285 4.887a.86.86 0 0 0-.413.425.88.88 0 0 0 0 .7V8.8l7.77 4.3a.89.89 0 0 0 .825 0l7.77-4.3V6.012a.88.88 0 0 0-.412-.425zM12.64 12.15L5.737 8.33V6.375l6.903 3.82v1.955zm1.72 0V10.2l6.903-3.825v1.955l-6.903 3.82zM4.872 10.7v7.288a.86.86 0 0 0 .413.737l7.77 4.3a.89.89 0 0 0 .825 0l7.77-4.3a.86.86 0 0 0 .412-.738V10.7l-1.72.95v6.538L13.465 22.1l-6.873-3.912V11.65l-1.72-.95z"/></svg></span>
+          <span>Laravel</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16.5 4.5c-1.8-1-4.2-.8-5.7.5-.8.7-1.3 1.7-1.5 2.7-.8.3-1.6.8-2.2 1.4-1.3 1.3-1.8 3.2-1.3 5 .4 1.4 1.4 2.5 2.7 3.1 1.2.6 2.6.7 3.9.4 1.8-.4 3.4-1.5 4.4-3 .8-1.2 1.2-2.7 1.1-4.1-.1-2.4-.4-4.8-1.4-6z" fill="#00758F"/><path d="M12.8 14.5c-.8.5-1.8.6-2.7.4-.7-.2-1.3-.7-1.6-1.4-.4-1-.1-2.2.7-2.9.7-.6 1.7-.8 2.6-.5.8.3 1.4.9 1.6 1.7.3 1 .1 2-.6 2.7z" fill="#F29111"/></svg></span>
+          <span>MySQL</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 2l1.65 18.5 7.35 2 7.35-2L21 2H3z" fill="#E34F26"/><path d="M12 3.8v17l5.8-1.6 1.4-15.4H12z" fill="#EF652A"/><path d="M12 8.3H7.8l.2 2.3h4V13H8.3l.2 2.3 3.5 1 .1.2 3.5-1 .4-4.3h-4V9.6h6.2l-.6 6.8-5.6 1.6v.1l-5.6-1.6-.4-4.6h2.2l.2 2.3 3.6 1v-4.5z" fill="#FFFFFF"/></svg></span>
+          <span>HTML5</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 2l1.65 18.5 7.35 2 7.35-2L21 2H3z" fill="#1572B6"/><path d="M12 3.8v17l5.8-1.6 1.4-15.4H12z" fill="#33A9DC"/><path d="M12 8.3H7.8l.2 2.3h4V13H8.3l.2 2.3 3.5 1v2.3l-5.6-1.6-.4-4.6h2.2l.2 2.3 3.6 1V8.3zm0 4.7h3.8l-.3 3.4-3.5 1v2.3l5.6-1.6.6-6.8H12V13z" fill="#FFFFFF"/></svg></span>
+          <span>CSS3 / SASS</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#F7DF1E"/><path d="M7.5 18c-.8 0-1.5-.3-2-.7l.8-1.4c.4.3.8.5 1.2.5.6 0 .9-.3.9-.9V9.5h1.9v6c0 1.6-1 2.5-2.8 2.5zm7.3 0c-1.8 0-3-1-3-2.6l1.8-.4c.1.9.7 1.4 1.5 1.4.7 0 1.1-.3 1.1-.8 0-.6-.5-.8-1.3-1.1-1.3-.5-2.2-1-2.2-2.3 0-1.4 1.1-2.4 2.8-2.4 1.5 0 2.6.7 2.8 2l-1.7.4c-.2-.6-.5-.9-1.1-.9-.6 0-.9.3-.9.7 0 .5.4.7 1.2 1 1.4.5 2.3 1.1 2.3 2.4 0 1.6-1.2 2.6-3.3 2.6z" fill="#000000"/></svg></span>
+          <span>JavaScript (ES6+)</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="rgba(0, 240, 255, 0.12)" stroke="#00f0ff" stroke-width="1.5"/><text x="12" y="16" fill="#00f0ff" font-family="'Fira Code', monospace" font-size="10" font-weight="700" text-anchor="middle">{;}</text></svg></span>
+          <span>JSON</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21.6 10.9L13.1 2.4c-.8-.8-2.1-.8-2.9 0L8.1 4.5l3.7 3.7c.9-.3 1.9-.1 2.6.6.7.7.9 1.7.6 2.6l3.5 3.5c.9-.3 1.9-.1 2.6.6 1 .9 1 2.5 0 3.5s-2.5 1-3.5 0c-.8-.7-1-1.8-.7-2.7l-3.3-3.3v4.6c.3.2.6.5.7.8.6 1 .3 2.3-.7 3-1 .6-2.3.3-3-.7-.6-1-.3-2.3.7-3 .3-.2.7-.3 1.1-.3V9.1c-.4 0-.8-.1-1.1-.3L4.5 12.6l-2.1-2.1c-.8-.8-.8-2.1 0-2.9L10.9 2.4c.8-.8 2.1-.8 2.9 0l7.8 7.8c.8.8.8 2.1 0 2.9l-2.2 2.2-2.9-2.9 2.2-2.2c.8-.8.8-2 0-2.9z" fill="#F05032"/></svg></span>
+          <span>Git &amp; GitHub</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="#0ACF83"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="#A259FF"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="#F24E1E"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="#FF7262"/><path d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z" fill="#1ABCFE"/></svg></span>
+          <span>Figma</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M11.9 1.5c-3.1 0-4.9.4-4.9 2.4v1.8h5V6H4.8C2.5 6 1.5 7.6 1.5 10.2s1.5 4 4.3 4h1.2v-1.9c0-1.8 1.5-3.3 3.3-3.3h5.1c1.5 0 2.6-1.1 2.6-2.6V3.9c0-1.9-1.9-2.4-6.1-2.4zm-2.8 1.4c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" fill="#3776AB"/><path d="M12.1 22.5c3.1 0 4.9-.4 4.9-2.4v-1.8h-5V18h7.2c2.3 0 3.3-1.6 3.3-4.2s-1.5-4-4.3-4H17v1.9c0 1.8-1.5 3.3-3.3 3.3H8.6c-1.5 0-2.6 1.1-2.6 2.6v2.5c0 1.9 1.9 2.4 6.1 2.4zm2.8-1.4c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9z" fill="#FFD438"/></svg></span>
+          <span>Python (Basic)</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#DEA584" stroke-width="2"/><path d="M12 4v3m0 10v3m8-8h-3M7 12H4m12.7-5.7l-2.1 2.1m-5.6 5.6l-2.1 2.1m11.3 0l-2.1-2.1m-5.6-5.6l-2.1-2.1" stroke="#DEA584" stroke-width="1.8"/><path d="M9.5 8h3c1.2 0 2 .8 2 1.8s-.8 1.8-2 1.8h-3V8zm0 3.6h2.5l2 4.4h-1.8l-1.6-3.8h-1.1v3.8h-1.5v-8z" fill="#DEA584"/></svg></span>
+          <span>Rust (Basic)</span>
+        </div>
+
+        <!-- Duplicated items for infinite loop continuity -->
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF2D20"><path d="M22.062 6.55a.862.862 0 0 0-.412-.425L13.88.587a.89.89 0 0 0-.825 0L5.285 4.887a.86.86 0 0 0-.413.425.88.88 0 0 0 0 .7V8.8l7.77 4.3a.89.89 0 0 0 .825 0l7.77-4.3V6.012a.88.88 0 0 0-.412-.425zM12.64 12.15L5.737 8.33V6.375l6.903 3.82v1.955zm1.72 0V10.2l6.903-3.825v1.955l-6.903 3.82zM4.872 10.7v7.288a.86.86 0 0 0 .413.737l7.77 4.3a.89.89 0 0 0 .825 0l7.77-4.3a.86.86 0 0 0 .412-.738V10.7l-1.72.95v6.538L13.465 22.1l-6.873-3.912V11.65l-1.72-.95z"/></svg></span>
+          <span>Laravel</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16.5 4.5c-1.8-1-4.2-.8-5.7.5-.8.7-1.3 1.7-1.5 2.7-.8.3-1.6.8-2.2 1.4-1.3 1.3-1.8 3.2-1.3 5 .4 1.4 1.4 2.5 2.7 3.1 1.2.6 2.6.7 3.9.4 1.8-.4 3.4-1.5 4.4-3 .8-1.2 1.2-2.7 1.1-4.1-.1-2.4-.4-4.8-1.4-6z" fill="#00758F"/><path d="M12.8 14.5c-.8.5-1.8.6-2.7.4-.7-.2-1.3-.7-1.6-1.4-.4-1-.1-2.2.7-2.9.7-.6 1.7-.8 2.6-.5.8.3 1.4.9 1.6 1.7.3 1 .1 2-.6 2.7z" fill="#F29111"/></svg></span>
+          <span>MySQL</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 2l1.65 18.5 7.35 2 7.35-2L21 2H3z" fill="#E34F26"/><path d="M12 3.8v17l5.8-1.6 1.4-15.4H12z" fill="#EF652A"/><path d="M12 8.3H7.8l.2 2.3h4V13H8.3l.2 2.3 3.5 1 .1.2 3.5-1 .4-4.3h-4V9.6h6.2l-.6 6.8-5.6 1.6v.1l-5.6-1.6-.4-4.6h2.2l.2 2.3 3.6 1v-4.5z" fill="#FFFFFF"/></svg></span>
+          <span>HTML5</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 2l1.65 18.5 7.35 2 7.35-2L21 2H3z" fill="#1572B6"/><path d="M12 3.8v17l5.8-1.6 1.4-15.4H12z" fill="#33A9DC"/><path d="M12 8.3H7.8l.2 2.3h4V13H8.3l.2 2.3 3.5 1v2.3l-5.6-1.6-.4-4.6h2.2l.2 2.3 3.6 1V8.3zm0 4.7h3.8l-.3 3.4-3.5 1v2.3l5.6-1.6.6-6.8H12V13z" fill="#FFFFFF"/></svg></span>
+          <span>CSS3 / SASS</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#F7DF1E"/><path d="M7.5 18c-.8 0-1.5-.3-2-.7l.8-1.4c.4.3.8.5 1.2.5.6 0 .9-.3.9-.9V9.5h1.9v6c0 1.6-1 2.5-2.8 2.5zm7.3 0c-1.8 0-3-1-3-2.6l1.8-.4c.1.9.7 1.4 1.5 1.4.7 0 1.1-.3 1.1-.8 0-.6-.5-.8-1.3-1.1-1.3-.5-2.2-1-2.2-2.3 0-1.4 1.1-2.4 2.8-2.4 1.5 0 2.6.7 2.8 2l-1.7.4c-.2-.6-.5-.9-1.1-.9-.6 0-.9.3-.9.7 0 .5.4.7 1.2 1 1.4.5 2.3 1.1 2.3 2.4 0 1.6-1.2 2.6-3.3 2.6z" fill="#000000"/></svg></span>
+          <span>JavaScript (ES6+)</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="rgba(0, 240, 255, 0.12)" stroke="#00f0ff" stroke-width="1.5"/><text x="12" y="16" fill="#00f0ff" font-family="'Fira Code', monospace" font-size="10" font-weight="700" text-anchor="middle">{;}</text></svg></span>
+          <span>JSON</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21.6 10.9L13.1 2.4c-.8-.8-2.1-.8-2.9 0L8.1 4.5l3.7 3.7c.9-.3 1.9-.1 2.6.6.7.7.9 1.7.6 2.6l3.5 3.5c.9-.3 1.9-.1 2.6.6 1 .9 1 2.5 0 3.5s-2.5 1-3.5 0c-.8-.7-1-1.8-.7-2.7l-3.3-3.3v4.6c.3.2.6.5.7.8.6 1 .3 2.3-.7 3-1 .6-2.3.3-3-.7-.6-1-.3-2.3.7-3 .3-.2.7-.3 1.1-.3V9.1c-.4 0-.8-.1-1.1-.3L4.5 12.6l-2.1-2.1c-.8-.8-.8-2.1 0-2.9L10.9 2.4c.8-.8 2.1-.8 2.9 0l7.8 7.8c.8.8.8 2.1 0 2.9l-2.2 2.2-2.9-2.9 2.2-2.2c.8-.8.8-2 0-2.9z" fill="#F05032"/></svg></span>
+          <span>Git &amp; GitHub</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="#0ACF83"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="#A259FF"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="#F24E1E"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="#FF7262"/><path d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z" fill="#1ABCFE"/></svg></span>
+          <span>Figma</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M11.9 1.5c-3.1 0-4.9.4-4.9 2.4v1.8h5V6H4.8C2.5 6 1.5 7.6 1.5 10.2s1.5 4 4.3 4h1.2v-1.9c0-1.8 1.5-3.3 3.3-3.3h5.1c1.5 0 2.6-1.1 2.6-2.6V3.9c0-1.9-1.9-2.4-6.1-2.4zm-2.8 1.4c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" fill="#3776AB"/><path d="M12.1 22.5c3.1 0 4.9-.4 4.9-2.4v-1.8h-5V18h7.2c2.3 0 3.3-1.6 3.3-4.2s-1.5-4-4.3-4H17v1.9c0 1.8-1.5 3.3-3.3 3.3H8.6c-1.5 0-2.6 1.1-2.6 2.6v2.5c0 1.9 1.9 2.4 6.1 2.4zm2.8-1.4c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9z" fill="#FFD438"/></svg></span>
+          <span>Python (Basic)</span>
+        </div>
+        <div class="skill-pill">
+          <span class="skill-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#DEA584" stroke-width="2"/><path d="M12 4v3m0 10v3m8-8h-3M7 12H4m12.7-5.7l-2.1 2.1m-5.6 5.6l-2.1 2.1m11.3 0l-2.1-2.1m-5.6-5.6l-2.1-2.1" stroke="#DEA584" stroke-width="1.8"/><path d="M9.5 8h3c1.2 0 2 .8 2 1.8s-.8 1.8-2 1.8h-3V8zm0 3.6h2.5l2 4.4h-1.8l-1.6-3.8h-1.1v3.8h-1.5v-8z" fill="#DEA584"/></svg></span>
+          <span>Rust (Basic)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section (3 Selected Work) -->
+    <section class="section" aria-labelledby="featured-projects-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge" data-i18n="hero_featured_badge">Featured Projects</span>
+          <h2 class="section-title" id="featured-projects-title" data-i18n="projects_title">Selected Work &amp; Systems</h2>
+          <p class="section-subtitle" data-i18n="projects_subtitle">From database-driven platforms to focused frontend interfaces</p>
+        </div>
+
+        <!-- Dynamic Grid populated with 3 featured projects via projects-data.js -->
+        <div class="projects-grid"></div>
+
+        <div style="text-align: center; margin-top: var(--space-3xl);" class="reveal">
+          <div class="magnetic-btn">
+            <a href="projects.html" class="btn btn-secondary" data-i18n="hero_view_all">
+              <span>View All 9 Projects</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Activity Section -->
+    <section class="section" id="github" aria-labelledby="github-activity-title" style="border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge" data-i18n="github_badge">GitHub Activity</span>
+          <h2 class="section-title" id="github-activity-title" data-i18n="github_title">GitHub Activity</h2>
+          <p class="section-subtitle">
+            <span data-i18n="github_subtitle">Real-time contribution heatmap and repository telemetry tracked directly from</span>
+            <a href="https://github.com/MarwanBouhamid07" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-family: var(--font-code); font-weight: 600;">@MarwanBouhamid07</a>
+          </p>
+        </div>
+
+        <!-- Dynamic Container for GitHub Activity Controller -->
+        <div id="github-activity-root"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" aria-label="Close modal" onclick="window.closeProjectModal()">✕</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-copy">
+        &copy; <span id="current-year">2026</span> Marwan Bouhamid. <span data-i18n="footer_rights">All rights reserved.</span>
+        <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" data-i18n="footer_tagline">Designed &amp; coded with precision in Tanger, Morocco.</div>
+      </div>
+      <a href="#main-content" class="back-to-top" data-i18n="footer_back_to_top">
+        <span>Back to top</span> ↑
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/preloader.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/github-activity.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

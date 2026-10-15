@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marwanbouhamid.netlify.app/sitemap.xml

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.2"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e293b" stroke-width="0.8"/>
+    </pattern>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="750" fill="url(#bgGrad)"/>
+  <rect width="600" height="750" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- Subtle ambient glow circle behind silhouette -->
+  <circle cx="300" cy="340" r="180" fill="url(#glowGrad)" filter="url(#glow)"/>
+
+  <!-- Tech geometric accents -->
+  <circle cx="300" cy="340" r="220" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.3"/>
+  <circle cx="300" cy="340" r="250" fill="none" stroke="#3b82f6" stroke-width="1" stroke-dasharray="2 6" opacity="0.2"/>
+
+  <!-- Male Portrait Silhouette (Formal styling) -->
+  <!-- Shoulders / Suit Coat -->
+  <path d="M120 750 C120 620 180 520 230 480 L270 560 L300 590 L330 560 L370 480 C420 520 480 620 480 750 Z" fill="#131c31"/>
+  <!-- Collar & Shirt -->
+  <path d="M265 490 L300 580 L335 490 L300 460 Z" fill="#e2e8f0"/>
+  <!-- Tie -->
+  <path d="M293 490 L307 490 L310 590 L300 640 L290 590 Z" fill="#00f0ff"/>
+  <polygon points="292,485 308,485 304,498 296,498" fill="#0284c7"/>
+  <!-- Neck -->
+  <path d="M270 420 L270 480 C270 495 330 495 330 480 L330 420 Z" fill="#94a3b8"/>
+  <!-- Head & Hair -->
+  <path d="M245 320 C245 230 270 210 300 210 C330 210 355 230 355 320 C355 385 335 430 300 430 C265 430 245 385 245 320 Z" fill="#cbd5e1"/>
+  <!-- Stylized Hair -->
+  <path d="M240 310 C238 230 270 185 300 185 C340 185 362 225 360 290 C345 260 325 240 295 245 C270 249 250 275 240 310 Z" fill="#0f172a"/>
+
+  <!-- Minimal facial suggestion & glasses/developer look -->
+  <rect x="262" y="295" width="32" height="18" rx="4" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <rect x="306" y="295" width="32" height="18" rx="4" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <line x1="294" y1="304" x2="306" y2="304" stroke="#00f0ff" stroke-width="2"/>
+
+  <!-- Code corner brackets -->
+  <text x="40" y="80" fill="#00f0ff" font-family="monospace" font-size="28" font-weight="bold">&lt;dev&gt;</text>
+  <text x="480" y="710" fill="#00f0ff" font-family="monospace" font-size="28" font-weight="bold">&lt;/dev&gt;</text>
+
+  <!-- Name Monogram Card -->
+  <g transform="translate(180, 640)">
+    <rect width="240" height="54" rx="27" fill="#0a0f1d" stroke="url(#accentGrad)" stroke-width="2"/>
+    <text x="120" y="34" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="1.5">MARWAN BOUHAMID</text>
+  </g>
+</svg>

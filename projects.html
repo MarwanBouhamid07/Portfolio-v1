@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Showcase | Marwan Bouhamid</title>
+  
+  <meta name="description" content="Explore 9 web development projects by Marwan Bouhamid including EduManager, Khidmati Al-Raqmiya, Weather Dashboard, and more. Full-Stack, Frontend, and API projects.">
+  <meta name="author" content="Marwan Bouhamid">
+  <link rel="canonical" href="https://marwanbouhamid.netlify.app/projects.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects Showcase | Marwan Bouhamid">
+  <meta property="og:description" content="Discover full-stack, frontend, and API web applications created by Marwan Bouhamid.">
+  <meta property="og:image" content="assets/images/profile-placeholder.png">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="page-projects">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="canvas-bg" aria-hidden="true"></canvas>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Marwan Bouhamid Homepage">
+        <span class="logo-bracket">&lt;</span>MB <span class="logo-dot"></span><span class="logo-bracket">&gt;</span>
+      </a>
+
+      <div class="nav-menu-wrapper" id="primary-nav-menu">
+        <nav class="site-nav" role="navigation" aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li class="nav-item"><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li class="nav-item"><a href="projects.html" class="active" data-i18n="nav_projects">Projects</a></li>
+            <li class="nav-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="lang-selector">
+            <button type="button" class="btn-icon btn-lang-toggle" aria-label="Select Language" title="Select Language">
+              <span class="current-lang-code" style="font-family: var(--font-code); font-size: 11px; font-weight: 700;">EN</span>
+            </button>
+            <div class="lang-dropdown" role="menu">
+              <button type="button" class="lang-option active" data-lang="en">English (EN)</button>
+              <button type="button" class="lang-option" data-lang="fr">Français (FR)</button>
+              <button type="button" class="lang-option" data-lang="ar">العربية (AR)</button>
+            </div>
+          </div>
+
+          <button type="button" class="btn-icon theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-icon"></span>
+          </button>
+
+          <div class="magnetic-btn">
+            <a href="assets/Marwan_Bouhamid_CV.pdf" class="btn btn-secondary btn-sm" download="Marwan_Bouhamid_CV.pdf" data-i18n="nav_cv">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="mobile-toggle" aria-label="Open Navigation Menu" aria-controls="primary-nav-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section" style="padding-top: calc(var(--nav-height) + var(--space-3xl));" aria-labelledby="all-projects-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge" data-i18n="projects_badge">Portfolio Showcase</span>
+          <h1 class="section-title" id="all-projects-title" data-i18n="projects_title">Selected Work &amp; Systems</h1>
+          <p class="section-subtitle" data-i18n="projects_subtitle">From database-driven platforms to focused frontend interfaces</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-tabs reveal">
+          <button type="button" class="filter-btn active" data-filter="all" data-i18n="filter_all">All Projects</button>
+          <button type="button" class="filter-btn" data-filter="fullstack" data-i18n="filter_fullstack">Full-Stack / Backend</button>
+          <button type="button" class="filter-btn" data-filter="frontend" data-i18n="filter_frontend">Frontend / UI</button>
+          <button type="button" class="filter-btn" data-filter="api" data-i18n="filter_api">API-based</button>
+        </div>
+
+        <!-- Dynamic Grid populated with all 9 projects via projects-data.js & main.js -->
+        <div class="projects-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" aria-label="Close modal" onclick="window.closeProjectModal()">✕</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-copy">
+        &copy; <span id="current-year">2026</span> Marwan Bouhamid. <span data-i18n="footer_rights">All rights reserved.</span>
+        <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" data-i18n="footer_tagline">Designed &amp; coded with precision in Tanger, Morocco.</div>
+      </div>
+      <a href="#main-content" class="back-to-top" data-i18n="footer_back_to_top">
+        <span>Back to top</span> ↑
+      </a>
+    </div>
+  </footer>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

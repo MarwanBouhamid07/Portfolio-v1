@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Marwan Bouhamid</title>
+  
+  <meta name="description" content="Learn about Marwan Bouhamid, Full-Stack Web Developer student at Solicode in Tanger, Morocco. Education, certifications, and technical stack.">
+  <meta name="author" content="Marwan Bouhamid">
+  <link rel="canonical" href="https://marwanbouhamid.netlify.app/about.html">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="About Marwan Bouhamid | Full-Stack Web Developer">
+  <meta property="og:description" content="Education, technical stack, and certificates of Marwan Bouhamid.">
+  <meta property="og:image" content="assets/images/profile-placeholder.png">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="page-about">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="canvas-bg" aria-hidden="true"></canvas>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Marwan Bouhamid Homepage">
+        <span class="logo-bracket">&lt;</span>MB <span class="logo-dot"></span><span class="logo-bracket">&gt;</span>
+      </a>
+
+      <div class="nav-menu-wrapper" id="primary-nav-menu">
+        <nav class="site-nav" role="navigation" aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+            <li class="nav-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li class="nav-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="lang-selector">
+            <button type="button" class="btn-icon btn-lang-toggle" aria-label="Select Language" title="Select Language">
+              <span class="current-lang-code" style="font-family: var(--font-code); font-size: 11px; font-weight: 700;">EN</span>
+            </button>
+            <div class="lang-dropdown" role="menu">
+              <button type="button" class="lang-option active" data-lang="en">English (EN)</button>
+              <button type="button" class="lang-option" data-lang="fr">Français (FR)</button>
+              <button type="button" class="lang-option" data-lang="ar">العربية (AR)</button>
+            </div>
+          </div>
+
+          <button type="button" class="btn-icon theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-icon"></span>
+          </button>
+
+          <div class="magnetic-btn">
+            <a href="assets/Marwan_Bouhamid_CV.pdf" class="btn btn-secondary btn-sm" download="Marwan_Bouhamid_CV.pdf" data-i18n="nav_cv">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="mobile-toggle" aria-label="Open Navigation Menu" aria-controls="primary-nav-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    
+    <!-- About Hero & Bio -->
+    <section class="section" style="padding-top: calc(var(--nav-height) + var(--space-3xl));" aria-labelledby="about-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="section-badge reveal" data-i18n="about_badge">About Me</span>
+          <h1 class="section-title reveal reveal-delay-1" id="about-title" style="font-size: var(--fs-4xl); margin-bottom: var(--space-md);" data-i18n="about_title">Curious Builder, Clean Coder</h1>
+          <blockquote class="hero-tagline reveal reveal-delay-2" data-i18n="about_tagline">"Make something good from you"</blockquote>
+          
+          <p class="hero-bio reveal reveal-delay-3" style="margin-bottom: var(--space-md);" data-i18n="about_bio_p1">
+            I am a web development student at Solicode (Programming and Digital Skills Training, 2025-2026) based in Tanger, Morocco.
+          </p>
+          <p class="hero-bio reveal reveal-delay-3" data-i18n="about_bio_p2">
+            I build responsive, reliable web applications using Laravel and JavaScript, bringing modern UI/UX principles together with solid backend logic. I also take freelance client projects to help businesses build effective digital tools.
+          </p>
+
+          <div class="hero-ctas reveal reveal-delay-4">
+            <div class="magnetic-btn">
+              <a href="contact.html" class="btn btn-primary" data-i18n="hero_cta_contact">
+                <span>Contact Me</span>
+              </a>
+            </div>
+            <div class="magnetic-btn">
+              <a href="assets/Marwan_Bouhamid_CV.pdf" class="btn btn-secondary" download="Marwan_Bouhamid_CV.pdf" data-i18n="hero_cta_cv">
+                <span>Download CV</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-delay-2">
+          <div class="photo-frame-wrapper">
+            <div class="photo-inner">
+              <img src="assets/images/profile.jpg" alt="Marwan Bouhamid portrait" class="profile-photo" onerror="this.onerror=null; this.src='assets/images/profile-placeholder.png'">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grouped Skills & Stylized Code Card -->
+    <section class="section" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Skillset</span>
+          <h2 class="section-title" id="skills-heading" data-i18n="skills_title">Technical Stack</h2>
+          <p class="section-subtitle" data-i18n="skills_subtitle">Disciplined foundation across backend, frontend, and development tooling</p>
+        </div>
+
+        <div class="skills-container">
+          <!-- Stylized Code Snippet Card -->
+          <div class="code-terminal reveal">
+            <div class="code-header">
+              <span data-i18n="skills_code_header">marwan@portfolio: ~/skills.json</span>
+              <span style="display:flex; gap:6px;">
+                <span class="term-dot red" style="width:8px; height:8px;"></span>
+                <span class="term-dot yellow" style="width:8px; height:8px;"></span>
+                <span class="term-dot green" style="width:8px; height:8px;"></span>
+              </span>
+            </div>
+            <pre class="code-content"><code><span class="code-bracket">{</span>
+  <span class="code-key">"developer"</span>: <span class="code-str">"Marwan Bouhamid"</span>,
+  <span class="code-key">"location"</span>: <span class="code-str">"Tanger, Morocco"</span>,
+  <span class="code-key">"backend"</span>: <span class="code-bracket">[</span>
+    <span class="code-str">"Laravel"</span>,
+    <span class="code-str">"MySQL"</span>
+  <span class="code-bracket">]</span>,
+  <span class="code-key">"frontend"</span>: <span class="code-bracket">[</span>
+    <span class="code-str">"HTML"</span>,
+    <span class="code-str">"CSS"</span>,
+    <span class="code-str">"SASS"</span>,
+    <span class="code-str">"JavaScript"</span>,
+    <span class="code-str">"JSON"</span>
+  <span class="code-bracket">]</span>,
+  <span class="code-key">"tools"</span>: <span class="code-bracket">[</span>
+    <span class="code-str">"Git &amp; GitHub"</span>,
+    <span class="code-str">"Figma"</span>
+  <span class="code-bracket">]</span>,
+  <span class="code-key">"basicLevel"</span>: <span class="code-bracket">[</span>
+    <span class="code-str">"Python"</span>,
+    <span class="code-str">"Rust"</span>
+  <span class="code-bracket">]</span>
+<span class="code-bracket">}</span></code></pre>
+          </div>
+
+          <!-- Grouped Skills Cards (No percentage bars) -->
+          <div class="skills-groups">
+            <div class="skill-group-card reveal">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title" data-i18n="skills_backend">Backend</h3>
+                <span style="font-size: var(--fs-xs); color: var(--accent); font-family: var(--font-code);">Server &amp; Database</span>
+              </div>
+              <div class="skill-group-items">
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+            </div>
+
+            <div class="skill-group-card reveal reveal-delay-1">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title" data-i18n="skills_frontend">Frontend</h3>
+                <span style="font-size: var(--fs-xs); color: var(--accent); font-family: var(--font-code);">UI &amp; Interaction</span>
+              </div>
+              <div class="skill-group-items">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">SASS</span>
+                <span class="tech-tag">JavaScript (ES6+)</span>
+                <span class="tech-tag">JSON</span>
+              </div>
+            </div>
+
+            <div class="skill-group-card reveal reveal-delay-2">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title" data-i18n="skills_tools">Tools &amp; Workflow</h3>
+                <span style="font-size: var(--fs-xs); color: var(--accent); font-family: var(--font-code);">Version &amp; Design</span>
+              </div>
+              <div class="skill-group-items">
+                <span class="tech-tag">Git &amp; GitHub</span>
+                <span class="tech-tag">Figma</span>
+              </div>
+            </div>
+
+            <div class="skill-group-card reveal reveal-delay-3">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title" data-i18n="skills_basic">Basic Level</h3>
+                <span style="font-size: var(--fs-xs); color: var(--accent-purple); font-family: var(--font-code);">Foundational</span>
+              </div>
+              <div class="skill-group-items">
+                <span class="tech-tag">Python (Basic)</span>
+                <span class="tech-tag">Rust (Basic)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certificates Section -->
+    <section class="section" aria-labelledby="edu-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge" data-i18n="about_education_title">Education &amp; Certifications</span>
+          <h2 class="section-title" id="edu-heading">Academic Path &amp; Credentials</h2>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <!-- Timeline of Education -->
+          <div class="timeline reveal">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-period" data-i18n="edu_1_period">2025 – 2026</div>
+              <h3 class="timeline-title" data-i18n="edu_1_title">Programming &amp; Digital Skills Training</h3>
+              <div class="timeline-org" data-i18n="edu_1_org">Solicode</div>
+              <p class="timeline-desc" data-i18n="edu_1_desc">Comprehensive full-stack web engineering curriculum, modern practices, and agile team workflows.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-period" data-i18n="edu_2_period">2024 – 2025</div>
+              <h3 class="timeline-title" data-i18n="edu_2_title">High School Diploma - Science (Physics)</h3>
+              <div class="timeline-org" data-i18n="edu_2_org">Secondary Education</div>
+              <p class="timeline-desc" data-i18n="edu_2_desc">Scientific foundation with focus on analytical problem solving and mathematics.</p>
+            </div>
+          </div>
+
+          <!-- Certificate Gallery & Lightbox Trigger -->
+          <div style="margin-top: var(--space-4xl);" class="reveal">
+            <h3 style="font-size: var(--fs-2xl); margin-bottom: 0.5rem;" data-i18n="cert_gallery_title">Certificates Gallery</h3>
+            <p style="color: var(--text-muted); margin-bottom: var(--space-xl);" data-i18n="cert_gallery_subtitle">Click on any certificate to view in high resolution</p>
+
+            <div class="certificate-gallery">
+              <div class="certificate-card" onclick="openCertificateLightbox('work-smarter-with-ai')" role="button" tabindex="0" aria-label="Open Work Smarter with AI Certificate">
+                <div class="certificate-preview-wrapper">
+                  <img src="assets/certificates/work-smarter-with-ai.svg" alt="Work smarter with AI certificate" class="certificate-img" onerror="this.onerror=null; this.src='assets/certificates/work-smarter-with-ai.jpg'">
+                </div>
+                <div class="certificate-info">
+                  <span class="project-category-badge" style="position:static; display:inline-block; margin-bottom:4px;" data-i18n="cert_badge">Verified Certificate</span>
+                  <h4 style="font-size: var(--fs-lg);" data-i18n="cert_title">Work smarter with AI</h4>
+                  <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">Click to expand certificate</p>
+                </div>
+              </div>
+              <div class="certificate-card" onclick="openCertificateLightbox('work-smarter-with-ai')" role="button" tabindex="0" aria-label="Open Work Smarter with AI Certificate">
+                <div class="certificate-preview-wrapper">
+                  <img src="assets/certificates/certificate1.png" alt="Technical Support Fundamentals" class="certificate-img" onerror="this.onerror=null; this.src='assets/certificates/certificate1.png'">
+                </div>
+                <div class="certificate-info">
+                  <span class="project-category-badge" style="position:static; display:inline-block; margin-bottom:4px;" data-i18n="cert_badge">Verified Certificate</span>
+                  <h4 style="font-size: var(--fs-lg);" data-i18n="cert_title">Technical Support Fundamentals</h4>
+                  <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">Click to expand certificate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal for Certificates -->
+  <div id="lightbox-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn lightbox-close" aria-label="Close certificate lightbox">✕</button>
+      <img id="lightbox-img" src="" alt="Certificate enlarged preview">
+      <div id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-copy">
+        &copy; <span id="current-year">2026</span> Marwan Bouhamid. <span data-i18n="footer_rights">All rights reserved.</span>
+        <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" data-i18n="footer_tagline">Designed &amp; coded with precision in Tanger, Morocco.</div>
+      </div>
+      <a href="#main-content" class="back-to-top" data-i18n="footer_back_to_top">
+        <span>Back to top</span> ↑
+      </a>
+    </div>
+  </footer>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/certificates.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

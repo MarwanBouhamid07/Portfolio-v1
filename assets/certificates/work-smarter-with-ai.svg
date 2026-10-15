@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="certBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a101f"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#050814"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Border & Canvas -->
+  <rect width="900" height="620" rx="16" fill="url(#certBg)"/>
+  <rect x="24" y="24" width="852" height="572" rx="12" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.8"/>
+  <rect x="34" y="34" width="832" height="552" rx="8" fill="none" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Corner Decors -->
+  <circle cx="50" cy="50" r="6" fill="#00f0ff"/>
+  <circle cx="850" cy="50" r="6" fill="#00f0ff"/>
+  <circle cx="50" cy="570" r="6" fill="#00f0ff"/>
+  <circle cx="850" cy="570" r="6" fill="#00f0ff"/>
+
+  <!-- Header -->
+  <text x="450" y="110" fill="#00f0ff" font-family="'JetBrains Mono', monospace" font-size="14" letter-spacing="4" text-anchor="middle">CERTIFICATE OF ACHIEVEMENT</text>
+  <text x="450" y="180" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">Work smarter with AI</text>
+
+  <!-- Subtitle -->
+  <text x="450" y="230" fill="#94a3b8" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" text-anchor="middle">This verifies that</text>
+
+  <!-- Name -->
+  <text x="450" y="295" fill="url(#gold)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="38" font-weight="900" text-anchor="middle" letter-spacing="1">MARWAN BOUHAMID</text>
+
+  <!-- Line -->
+  <line x1="280" y1="320" x2="620" y2="320" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Description -->
+  <text x="450" y="365" fill="#cbd5e1" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" text-anchor="middle">has successfully mastered foundational AI tools, workflows, and productivity enhancement</text>
+  <text x="450" y="395" fill="#94a3b8" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15" text-anchor="middle">for modern software development and engineering solutions.</text>
+
+  <!-- Badge Emblem -->
+  <g transform="translate(450, 480)">
+    <circle cx="0" cy="0" r="42" fill="#0f172a" stroke="url(#gold)" stroke-width="2"/>
+    <text x="0" y="-8" fill="#00f0ff" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">VERIFIED</text>
+    <text x="0" y="14" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">AI SKILLS</text>
+  </g>
+
+  <!-- Issuer and Date -->
+  <text x="120" y="520" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="13">STATUS: ISSUED &amp; VERIFIED</text>
+  <text x="780" y="520" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="13" text-anchor="end">YEAR: 2025</text>
+</svg>
