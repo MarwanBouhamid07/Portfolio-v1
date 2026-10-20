@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Dashboard Overview | Portfolio CMS</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Sidebar Navigation -->
+  <aside class="admin-sidebar" aria-label="Admin Navigation">
+    <div class="admin-brand">
+      <a href="index.html" class="admin-brand-title">
+        <span>&lt;MB <span class="logo-dot"></span>&gt;</span>
+        <span class="admin-brand-badge">CMS</span>
+      </a>
+      <button type="button" class="admin-mobile-toggle" id="admin-sidebar-toggle" aria-label="Toggle Navigation">✕</button>
+    </div>
+
+    <nav class="admin-nav" role="navigation">
+      <a href="index.html" class="admin-nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="projects.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        <span>Projects</span>
+      </a>
+
+      <a href="skills.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <span>Skills</span>
+      </a>
+
+      <a href="certificates.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        <span>Certificates</span>
+      </a>
+
+      <a href="profile.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Profile &amp; CV</span>
+      </a>
+
+      <a href="messages.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Messages</span>
+        <span class="badge-count" id="nav-unread-badge" style="display: none;">0</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a href="../index.html" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer" style="justify-content: center; gap: 8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <span>View Live Site</span>
+      </a>
+
+      <button type="button" class="btn btn-secondary btn-sm" onclick="adminLogout()" style="justify-content: center; gap: 8px; color: var(--color-danger); border-color: rgba(239,68,68,0.2);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content View -->
+  <main class="admin-main">
+    
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div style="display: flex; align-items: center; gap: var(--space-md);">
+        <button type="button" class="admin-mobile-toggle" id="admin-sidebar-toggle-btn" aria-label="Open sidebar">☰</button>
+        <h1 class="admin-topbar-title">Dashboard Overview</h1>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <button type="button" class="btn-icon theme-toggle" id="admin-theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">
+          <span class="theme-icon"></span>
+        </button>
+        <span id="admin-user-email" style="font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--font-code);">admin</span>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      
+      <!-- Metrics Grid -->
+      <section class="stats-grid" aria-label="Overview Statistics">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-projects-count">0</div>
+            <div class="stat-label">Projects</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-purple);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-skills-count">0</div>
+            <div class="stat-label">Skills Listed</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper" style="background: rgba(16, 185, 129, 0.1); color: var(--color-success);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-certs-count">0</div>
+            <div class="stat-label">Certificates</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper" style="background: rgba(245, 158, 11, 0.1); color: var(--color-warning);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-messages-count">0</div>
+            <div class="stat-label">Unread Messages</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="admin-card" aria-label="Quick Actions">
+        <div class="admin-card-header">
+          <h2 class="admin-card-title">Quick Actions &amp; Backup</h2>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-download-backup">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download Backup (JSON)</span>
+          </button>
+        </div>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-md);">
+          <a href="projects.html" class="btn btn-primary btn-sm">
+            <span>+ Manage Projects</span>
+          </a>
+          <a href="skills.html" class="btn btn-secondary btn-sm">
+            <span>+ Manage Skills</span>
+          </a>
+          <a href="certificates.html" class="btn btn-secondary btn-sm">
+            <span>+ Manage Certificates</span>
+          </a>
+          <a href="profile.html" class="btn btn-secondary btn-sm">
+            <span>Edit Profile &amp; CV</span>
+          </a>
+          <a href="messages.html" class="btn btn-secondary btn-sm">
+            <span>View Inbox</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Two-column Recent Tables -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--space-xl);">
+        
+        <!-- Recent Projects -->
+        <section class="admin-card">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title" style="font-size: var(--fs-lg);">Recent Projects</h3>
+            <a href="projects.html" style="font-size: var(--fs-xs); color: var(--accent); text-decoration: none;">View All →</a>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Category</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recent-projects-tbody">
+                <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Loading projects...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Recent Contact Messages -->
+        <section class="admin-card">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title" style="font-size: var(--fs-lg);">Recent Inquiries</h3>
+            <a href="messages.html" style="font-size: var(--fs-xs); color: var(--accent); text-decoration: none;">View Inbox →</a>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Sender</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recent-messages-tbody">
+                <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Loading messages...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Pinned Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
+  <script src="../assets/js/supabase-config.js"></script>
+  <script src="admin-common.js"></script>
+  <script src="admin-dashboard.js"></script>
+
+</body>
+</html>

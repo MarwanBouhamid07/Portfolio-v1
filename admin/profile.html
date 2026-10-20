@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Profile &amp; Settings | Portfolio CMS</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" aria-label="Admin Navigation">
+    <div class="admin-brand">
+      <a href="index.html" class="admin-brand-title">
+        <span>&lt;MB <span class="logo-dot"></span>&gt;</span>
+        <span class="admin-brand-badge">CMS</span>
+      </a>
+      <button type="button" class="admin-mobile-toggle" id="admin-sidebar-toggle" aria-label="Toggle Navigation">✕</button>
+    </div>
+
+    <nav class="admin-nav" role="navigation">
+      <a href="index.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="projects.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        <span>Projects</span>
+      </a>
+      <a href="skills.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <span>Skills</span>
+      </a>
+      <a href="certificates.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        <span>Certificates</span>
+      </a>
+      <a href="profile.html" class="admin-nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Profile &amp; CV</span>
+      </a>
+      <a href="messages.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Messages</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a href="../index.html" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer" style="justify-content: center; gap: 8px;">
+        <span>Public Home View ↗</span>
+      </a>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="adminLogout()" style="justify-content: center; gap: 8px; color: var(--color-danger); border-color: rgba(239,68,68,0.2);">
+        <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div style="display: flex; align-items: center; gap: var(--space-md);">
+        <button type="button" class="admin-mobile-toggle" id="admin-sidebar-toggle-btn" aria-label="Open sidebar">☰</button>
+        <h1 class="admin-topbar-title">Profile &amp; Settings</h1>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <button type="button" class="btn-icon theme-toggle" id="admin-theme-toggle" aria-label="Toggle Theme">
+          <span class="theme-icon"></span>
+        </button>
+        <span id="admin-user-email" style="font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--font-code);">admin</span>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      
+      <form id="profile-form">
+        
+        <!-- Media Assets Card -->
+        <section class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Media &amp; Documents</h2>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl);">
+            
+            <!-- Profile Photo -->
+            <div class="admin-form-group">
+              <label class="admin-label">Profile Portrait (Auto-compressed to WebP)</label>
+              <div style="display: flex; align-items: center; gap: var(--space-lg); margin-top: var(--space-sm);">
+                <img id="profile-photo-preview" src="../assets/images/profile-placeholder.png" alt="Profile" style="width: 88px; height: 88px; border-radius: var(--radius-full); object-fit: cover; border: 2px solid var(--accent);">
+                <div>
+                  <input type="file" id="profile-photo-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('profile-photo-input').click()">
+                    Upload New Photo
+                  </button>
+                  <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Recommended: Square ratio, max 2MB</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CV Document -->
+            <div class="admin-form-group">
+              <label class="admin-label">Curriculum Vitae (CV PDF Document)</label>
+              <div style="margin-top: var(--space-sm);">
+                <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: 6px;">
+                  <a id="current-cv-link" href="../assets/Marwan_Bouhamid_CV.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: var(--fs-sm); font-weight: 600;">
+                    View Current CV (PDF) ↗
+                  </a>
+                </div>
+                <input type="file" id="profile-cv-input" accept="application/pdf" style="display: none;">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('profile-cv-input').click()">
+                  Replace CV File (PDF, Max 5MB)
+                </button>
+                <div id="staged-cv-name" style="font-size: 11px; color: var(--accent); font-family: var(--font-code); margin-top: 6px;"></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Personal & Contact Information -->
+        <section class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Personal &amp; Contact Details</h2>
+          </div>
+
+          <div class="form-row">
+            <div class="admin-form-group">
+              <label for="prof-name" class="admin-label">Full Name *</label>
+              <input type="text" id="prof-name" class="admin-input" required placeholder="Marwan Bouhamid">
+            </div>
+            <div class="admin-form-group">
+              <label for="prof-email" class="admin-label">Primary Email Address *</label>
+              <input type="email" id="prof-email" class="admin-input" required placeholder="marwanbouhamid123@gmail.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="admin-form-group">
+              <label for="prof-phone" class="admin-label">Phone Number</label>
+              <input type="text" id="prof-phone" class="admin-input" placeholder="0645905095">
+            </div>
+            <div class="admin-form-group">
+              <label for="prof-whatsapp" class="admin-label">WhatsApp Number (Digits with country code)</label>
+              <input type="text" id="prof-whatsapp" class="admin-input" placeholder="212645905095">
+            </div>
+          </div>
+        </section>
+
+        <!-- Multilingual Bio & Titles Card -->
+        <section class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Localized Profile Bio &amp; Tagline</h2>
+            <div class="lang-tabs" style="margin-bottom: 0;">
+              <button type="button" class="lang-tab-btn profile-lang-tab-btn active" data-lang="en">English (EN)</button>
+              <button type="button" class="lang-tab-btn profile-lang-tab-btn" data-lang="fr">Français (FR)</button>
+              <button type="button" class="lang-tab-btn profile-lang-tab-btn" data-lang="ar">العربية (AR)</button>
+            </div>
+          </div>
+
+          <!-- EN Pane -->
+          <div class="lang-tab-pane profile-lang-pane active" data-lang="en">
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label for="prof-title-en" class="admin-label">Professional Title (EN)</label>
+                <input type="text" id="prof-title-en" class="admin-input" placeholder="Full-Stack Web Developer">
+              </div>
+              <div class="admin-form-group">
+                <label for="prof-tagline-en" class="admin-label">Tagline (EN)</label>
+                <input type="text" id="prof-tagline-en" class="admin-input" placeholder="Make something good from you">
+              </div>
+              <div class="admin-form-group">
+                <label for="prof-location-en" class="admin-label">Location (EN)</label>
+                <input type="text" id="prof-location-en" class="admin-input" placeholder="Tanger, Morocco">
+              </div>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="prof-bio-en-1" class="admin-label">Bio Paragraph 1 (EN)</label>
+              <textarea id="prof-bio-en-1" class="admin-textarea" placeholder="Education, background, Solicode..."></textarea>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="prof-bio-en-2" class="admin-label">Bio Paragraph 2 (EN)</label>
+              <textarea id="prof-bio-en-2" class="admin-textarea" placeholder="Tech focus, Laravel, JavaScript, freelancing..."></textarea>
+            </div>
+          </div>
+
+          <!-- FR Pane -->
+          <div class="lang-tab-pane profile-lang-pane" data-lang="fr">
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label for="prof-title-fr" class="admin-label">Titre Professionnel (FR)</label>
+                <input type="text" id="prof-title-fr" class="admin-input" placeholder="Développeur Web Full-Stack">
+              </div>
+              <div class="admin-form-group">
+                <label for="prof-tagline-fr" class="admin-label">Slogan (FR)</label>
+                <input type="text" id="prof-tagline-fr" class="admin-input" placeholder="Make something good from you">
+              </div>
+              <div class="admin-form-group">
+                <label for="prof-location-fr" class="admin-label">Localisation (FR)</label>
+                <input type="text" id="prof-location-fr" class="admin-input" placeholder="Tanger, Maroc">
+              </div>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="prof-bio-fr-1" class="admin-label">Bio Paragraphe 1 (FR)</label>
+              <textarea id="prof-bio-fr-1" class="admin-textarea" placeholder="Formation, Solicode..."></textarea>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="prof-bio-fr-2" class="admin-label">Bio Paragraphe 2 (FR)</label>
+              <textarea id="prof-bio-fr-2" class="admin-textarea" placeholder="Compétences, missions freelance..."></textarea>
+            </div>
+          </div>
+
+          <!-- AR Pane -->
+          <div class="lang-tab-pane profile-lang-pane" data-lang="ar" dir="rtl">
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label for="prof-title-ar" class="admin-label">المسمى المهني (العربية)</label>
+                <input type="text" id="prof-title-ar" class="admin-input" placeholder="مطور ويب شامل (Full-Stack)">
+              </div>
+              <div class="admin-form-group">
+                <label for="prof-tagline-ar" class="admin-label">الشعار (العربية)</label>
+                <input type="text" id="prof-tagline-ar" class="admin-input" placeholder="Make something good from you">
+              </div>
+              <div class="admin-form-group">
+                <label for="prof-location-ar" class="admin-label">الموقع الجغرافي (العربية)</label>
+                <input type="text" id="prof-location-ar" class="admin-input" placeholder="طنجة، المغرب">
+              </div>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="prof-bio-ar-1" class="admin-label">النبذة التعريفية 1 (العربية)</label>
+              <textarea id="prof-bio-ar-1" class="admin-textarea" placeholder="التكوين، Solicode..."></textarea>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="prof-bio-ar-2" class="admin-label">النبذة التعريفية 2 (العربية)</label>
+              <textarea id="prof-bio-ar-2" class="admin-textarea" placeholder="المسار البرمجي والعمل الحر..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Save Profile Button -->
+        <div style="margin-bottom: var(--space-2xl); display: flex; justify-content: flex-end;">
+          <button type="submit" id="save-profile-btn" class="btn btn-primary" style="padding: 12px 28px;">
+            <span>Save All Profile Changes</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Social Links Card -->
+      <section class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title">Online Profiles &amp; Social Links</h2>
+            <p style="color: var(--text-muted); font-size: var(--fs-xs);">Links displayed across footer and contact pages.</p>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="openAddSocialModal()">
+            + Add Social Link
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>URL</th>
+                <th>Icon Code</th>
+                <th>Visibility</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="social-links-tbody">
+              <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Loading social links...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Add Social Link Modal -->
+  <div class="admin-modal-backdrop" id="social-modal" role="dialog" aria-modal="true" aria-labelledby="social-modal-title">
+    <div class="admin-modal-card" style="max-width: 480px;">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title" id="social-modal-title">Add Social Profile</h3>
+        <button type="button" class="admin-modal-close" onclick="closeAdminModal('social-modal')">✕</button>
+      </div>
+
+      <form id="social-form">
+        <div class="admin-form-group">
+          <label for="social-label" class="admin-label">Platform Name *</label>
+          <input type="text" id="social-label" class="admin-input" required placeholder="e.g. GitHub, LinkedIn, Twitter">
+        </div>
+        <div class="admin-form-group">
+          <label for="social-url" class="admin-label">Profile URL *</label>
+          <input type="url" id="social-url" class="admin-input" required placeholder="https://...">
+        </div>
+        <div class="admin-form-group">
+          <label for="social-icon" class="admin-label">Icon Identifier *</label>
+          <input type="text" id="social-icon" class="admin-input" required placeholder="github, linkedin, twitter, whatsapp">
+        </div>
+
+        <div style="display: flex; gap: var(--space-md); justify-content: flex-end; margin-top: var(--space-xl);">
+          <button type="button" class="btn btn-secondary" onclick="closeAdminModal('social-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pinned Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
+  <script src="../assets/js/supabase-config.js"></script>
+  <script src="admin-common.js"></script>
+  <script src="admin-profile.js"></script>
+
+</body>
+</html>

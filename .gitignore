@@ -1,0 +1,26 @@
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+*.secret
+*.pem
+*.key
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Dependencies (if any local tooling is used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

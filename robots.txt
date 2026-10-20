@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /admin/
 Allow: /
 
 Sitemap: https://marwanbouhamid.netlify.app/sitemap.xml

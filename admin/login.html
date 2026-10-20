@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Admin Login | Portfolio CMS</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body" style="align-items: center; justify-content: center; min-height: 100vh;">
+
+  <div class="admin-card" style="width: 100%; max-width: 420px; margin: var(--space-md); border-color: var(--border-color); box-shadow: var(--shadow-lg);">
+    
+    <div style="text-align: center; margin-bottom: var(--space-xl);">
+      <a href="../index.html" class="admin-brand-title" style="justify-content: center; font-size: var(--fs-2xl); margin-bottom: var(--space-xs);">
+        &lt;MB <span class="logo-dot"></span>&gt;
+      </a>
+      <span class="admin-brand-badge">ADMIN CMS</span>
+      <p style="color: var(--text-muted); font-size: var(--fs-sm); margin-top: var(--space-sm);">
+        Sign in to manage your portfolio content
+      </p>
+    </div>
+
+    <!-- Feedback message -->
+    <div id="login-alert" style="display: none; padding: 10px 14px; border-radius: var(--radius-md); font-size: var(--fs-sm); margin-bottom: var(--space-lg);" role="alert"></div>
+
+    <form id="login-form">
+      <div class="admin-form-group">
+        <label for="login-email" class="admin-label">Email Address</label>
+        <input type="email" id="login-email" class="admin-input" required autocomplete="email" placeholder="admin@example.com">
+      </div>
+
+      <div class="admin-form-group">
+        <label for="login-password" class="admin-label">Password</label>
+        <input type="password" id="login-password" class="admin-input" required autocomplete="current-password" placeholder="••••••••">
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+        <button type="button" id="btn-forgot-password" style="background: none; border: none; color: var(--accent); font-size: var(--fs-xs); cursor: pointer; text-decoration: underline;">
+          Forgot password?
+        </button>
+      </div>
+
+      <button type="submit" id="btn-submit-login" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        <span>Sign In to Dashboard</span>
+      </button>
+    </form>
+
+    <div style="margin-top: var(--space-xl); text-align: center; border-top: 1px solid var(--border-color); padding-top: var(--space-md);">
+      <a href="../index.html" style="color: var(--text-muted); font-size: var(--fs-xs); text-decoration: none;">
+        ← Return to Public Portfolio
+      </a>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="admin-modal-backdrop" id="forgot-password-modal">
+    <div class="admin-modal-card" style="max-width: 440px;">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title">Reset Password</h3>
+        <button type="button" class="admin-modal-close" onclick="closeAdminModal('forgot-password-modal')">✕</button>
+      </div>
+      <p style="color: var(--text-secondary); font-size: var(--fs-sm); margin-bottom: var(--space-lg);">
+        Enter your admin email. A secure recovery link will be sent via Supabase Auth.
+      </p>
+      <form id="forgot-form">
+        <div class="admin-form-group">
+          <label for="reset-email" class="admin-label">Admin Email</label>
+          <input type="email" id="reset-email" class="admin-input" required placeholder="admin@example.com">
+        </div>
+        <div style="display: flex; gap: var(--space-md); justify-content: flex-end; margin-top: var(--space-lg);">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeAdminModal('forgot-password-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Send Reset Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pinned Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
+  <script src="../assets/js/supabase-config.js"></script>
+  <script src="admin-common.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('login-form');
+      const loginAlert = document.getElementById('login-alert');
+      const submitBtn = document.getElementById('btn-submit-login');
+      const forgotBtn = document.getElementById('btn-forgot-password');
+      const forgotForm = document.getElementById('forgot-form');
+
+      function showAlert(msg, isError = true) {
+        loginAlert.style.display = 'block';
+        loginAlert.style.background = isError ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)';
+        loginAlert.style.color = isError ? '#ef4444' : '#10b981';
+        loginAlert.style.border = `1px solid ${isError ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}`;
+        loginAlert.textContent = msg;
+      }
+
+      // Check if Supabase client is available
+      const gateway = window.PortfolioSupabase;
+      if (!gateway || !gateway.isConfigured()) {
+        showAlert('Supabase is not configured yet. Please configure your project URL and public anon key in assets/js/supabase-config.js', true);
+      }
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginAlert.style.display = 'none';
+
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        const supabase = gateway ? gateway.getClient() : null;
+        if (!supabase) {
+          showAlert('Supabase client failed to initialize. Check config.', true);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Signing in...</span>';
+
+        try {
+          const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+          if (error) {
+            // Show generic error message to prevent user enumeration
+            showAlert('Invalid credentials. Please verify your email and password.', true);
+          } else if (data.session) {
+            window.adminToast.show('Authenticated successfully. Redirecting...', 'success');
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 600);
+          }
+        } catch (err) {
+          showAlert('An unexpected network error occurred. Please try again.', true);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Sign In to Dashboard</span>';
+        }
+      });
+
+      forgotBtn.addEventListener('click', () => {
+        openAdminModal('forgot-password-modal');
+      });
+
+      forgotForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('reset-email').value.trim();
+        const supabase = gateway ? gateway.getClient() : null;
+        if (!supabase) return;
+
+        try {
+          const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/admin/login.html'
+          });
+          closeAdminModal('forgot-password-modal');
+          if (error) {
+            window.adminToast.show('Unable to process password reset request.', 'error');
+          } else {
+            window.adminToast.show('Password reset email sent if account exists.', 'success');
+          }
+        } catch (err) {
+          window.adminToast.show('Network error while requesting password reset.', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

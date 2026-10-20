@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Contact Inbox | Portfolio CMS</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" aria-label="Admin Navigation">
+    <div class="admin-brand">
+      <a href="index.html" class="admin-brand-title">
+        <span>&lt;MB <span class="logo-dot"></span>&gt;</span>
+        <span class="admin-brand-badge">CMS</span>
+      </a>
+      <button type="button" class="admin-mobile-toggle" id="admin-sidebar-toggle" aria-label="Toggle Navigation">✕</button>
+    </div>
+
+    <nav class="admin-nav" role="navigation">
+      <a href="index.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="projects.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        <span>Projects</span>
+      </a>
+      <a href="skills.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <span>Skills</span>
+      </a>
+      <a href="certificates.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        <span>Certificates</span>
+      </a>
+      <a href="profile.html" class="admin-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Profile &amp; CV</span>
+      </a>
+      <a href="messages.html" class="admin-nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Messages</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a href="../contact.html" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer" style="justify-content: center; gap: 8px;">
+        <span>Public Contact Page ↗</span>
+      </a>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="adminLogout()" style="justify-content: center; gap: 8px; color: var(--color-danger); border-color: rgba(239,68,68,0.2);">
+        <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div style="display: flex; align-items: center; gap: var(--space-md);">
+        <button type="button" class="admin-mobile-toggle" id="admin-sidebar-toggle-btn" aria-label="Open sidebar">☰</button>
+        <h1 class="admin-topbar-title">Contact Messages Inbox</h1>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <button type="button" class="btn-icon theme-toggle" id="admin-theme-toggle" aria-label="Toggle Theme">
+          <span class="theme-icon"></span>
+        </button>
+        <span id="admin-user-email" style="font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--font-code);">admin</span>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+        <div>
+          <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+            Inquiries submitted via the public contact form. Protected by Row Level Security (Admin only).
+          </p>
+        </div>
+        <select id="message-filter" class="admin-select" style="max-width: 160px;">
+          <option value="all">All Messages</option>
+          <option value="unread">Unread Only</option>
+          <option value="read">Read Only</option>
+        </select>
+      </div>
+
+      <!-- Messages Table Card -->
+      <div class="admin-card" style="padding: 0; overflow: hidden;">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Received</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="messages-table-body">
+              <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: var(--space-xl);">Loading messages...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Message Detail Modal -->
+  <div class="admin-modal-backdrop" id="message-view-modal" role="dialog" aria-modal="true" aria-labelledby="msg-detail-subject">
+    <div class="admin-modal-card" style="max-width: 640px;">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title" id="msg-detail-subject">Message</h3>
+        <button type="button" class="admin-modal-close" onclick="closeAdminModal('message-view-modal')" aria-label="Close modal">✕</button>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-lg); margin-bottom: var(--space-lg);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xs);">
+          <strong id="msg-detail-sender" style="font-size: var(--fs-lg); color: var(--text-primary);">Sender</strong>
+          <span id="msg-detail-date" style="font-size: var(--fs-xs); color: var(--text-muted);">Date</span>
+        </div>
+        <div>
+          <a id="msg-detail-email" href="#" style="color: var(--accent); font-size: var(--fs-sm);">email@example.com</a>
+        </div>
+      </div>
+
+      <div class="admin-form-group">
+        <label class="admin-label">Message Body</label>
+        <div id="msg-detail-body" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-lg); line-height: 1.7; white-space: pre-wrap; font-size: var(--fs-sm); color: var(--text-secondary); max-height: 320px; overflow-y: auto;"></div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-xl); border-top: 1px solid var(--border-color); padding-top: var(--space-lg);">
+        <button type="button" class="btn btn-secondary" onclick="closeAdminModal('message-view-modal')">Close</button>
+        <a id="msg-detail-reply-btn" href="#" class="btn btn-primary" onclick="window.location.href = document.getElementById('msg-detail-email').href;">
+          <span>Reply via Email ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pinned Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
+  <script src="../assets/js/supabase-config.js"></script>
+  <script src="admin-common.js"></script>
+  <script src="admin-messages.js"></script>
+
+</body>
+</html>
