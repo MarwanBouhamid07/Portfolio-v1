@@ -13,6 +13,31 @@
 
   const gateway = window.PortfolioSupabase;
 
+  const PROJECT_FALLBACK_SVG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'><rect width='60' height='40' rx='4' fill='%231a2333'/><path d='M16 28l7-8 5 5 8-10 8 13H16z' fill='%2300f0ff' opacity='0.7'/><circle cx='23' cy='14' r='3' fill='%2300f0ff'/></svg>";
+
+  function resolveAdminMediaUrl(url) {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:') || url.startsWith('/')) {
+      return url;
+    }
+    return '../' + url;
+  }
+
+  function getProjectThumbUrl(p) {
+    if (!p) return PROJECT_FALLBACK_SVG;
+    if (p.image_url && (p.image_url.startsWith('http') || p.image_url.startsWith('data:') || p.image_url.startsWith('blob:'))) {
+      return p.image_url;
+    }
+    // Prefer fallback_image_url (.png) if present since SVG files may not exist on disk
+    if (p.fallback_image_url) {
+      return resolveAdminMediaUrl(p.fallback_image_url);
+    }
+    if (p.image_url) {
+      return resolveAdminMediaUrl(p.image_url);
+    }
+    return PROJECT_FALLBACK_SVG;
+  }
+
   function slugify(text) {
     return text
       .toString()
@@ -73,7 +98,7 @@
           </div>
         </td>
         <td style="width: 70px;">
-          <img src="${p.image_url}" alt="${gateway.escapeHTML(p.title)}" class="table-thumb" onerror="this.onerror=null; this.src='../assets/images/profile-placeholder.png'">
+          <img src="${getProjectThumbUrl(p)}" alt="${gateway.escapeHTML(p.title)}" class="table-thumb" onerror="if(this.src!=='${resolveAdminMediaUrl(p.fallback_image_url)}'&&'${p.fallback_image_url}'){this.src='${resolveAdminMediaUrl(p.fallback_image_url)}';}else{this.onerror=null;this.src='${PROJECT_FALLBACK_SVG}';}">
         </td>
         <td>
           <strong>${gateway.escapeHTML(p.title)}</strong>
@@ -225,8 +250,9 @@
     document.getElementById('proj-featured').checked = !!p.featured;
 
     const preview = document.getElementById('image-preview');
-    if (p.image_url) {
-      preview.src = p.image_url;
+    const existingImg = getProjectThumbUrl(p);
+    if (existingImg && existingImg !== PROJECT_FALLBACK_SVG) {
+      preview.src = existingImg;
       preview.style.display = 'block';
     } else {
       preview.style.display = 'none';
@@ -323,7 +349,7 @@
       }
 
       if (!image_url) {
-        image_url = 'assets/images/profile-placeholder.png';
+        image_url = existing ? (existing.image_url || '') : '';
       }
 
       const payload = {

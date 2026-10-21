@@ -12,6 +12,30 @@
 
   const gateway = window.PortfolioSupabase;
 
+  const CERT_FALLBACK_SVG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'><rect width='60' height='40' rx='4' fill='%231a2333'/><circle cx='30' cy='18' r='8' fill='none' stroke='%2310b981' stroke-width='2'/><path d='M26 26l4 7 4-7' fill='%2310b981'/></svg>";
+
+  function resolveAdminMediaUrl(url) {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:') || url.startsWith('/')) {
+      return url;
+    }
+    return '../' + url;
+  }
+
+  function getCertThumbUrl(c) {
+    if (!c) return CERT_FALLBACK_SVG;
+    if (c.image_url && (c.image_url.startsWith('http') || c.image_url.startsWith('data:') || c.image_url.startsWith('blob:'))) {
+      return c.image_url;
+    }
+    if (c.image_url) {
+      return resolveAdminMediaUrl(c.image_url);
+    }
+    if (c.fallback_image_url) {
+      return resolveAdminMediaUrl(c.fallback_image_url);
+    }
+    return CERT_FALLBACK_SVG;
+  }
+
   async function loadCertificates() {
     if (!gateway) return;
     const supabase = gateway.getClient();
@@ -52,7 +76,7 @@
             </div>
           </td>
           <td style="width: 70px;">
-            <img src="${c.image_url}" alt="${gateway.escapeHTML(c.title)}" class="table-thumb" onerror="this.onerror=null; this.src='../assets/images/profile-placeholder.png'">
+            <img src="${getCertThumbUrl(c)}" alt="${gateway.escapeHTML(c.title)}" class="table-thumb" onerror="if(this.src!=='${resolveAdminMediaUrl(c.fallback_image_url)}'&&'${c.fallback_image_url}'){this.src='${resolveAdminMediaUrl(c.fallback_image_url)}';}else{this.onerror=null;this.src='${CERT_FALLBACK_SVG}';}">
           </td>
           <td>
             <strong>${gateway.escapeHTML(c.title)}</strong>
@@ -158,8 +182,9 @@
     document.getElementById('cert-visible').checked = !!c.visible;
 
     const preview = document.getElementById('cert-preview');
-    if (c.image_url) {
-      preview.src = c.image_url;
+    const existingImg = getCertThumbUrl(c);
+    if (existingImg && existingImg !== CERT_FALLBACK_SVG) {
+      preview.src = existingImg;
       preview.style.display = 'block';
     } else {
       preview.style.display = 'none';
@@ -232,7 +257,7 @@
       }
 
       if (!image_url) {
-        image_url = 'assets/certificates/work-smarter-with-ai.svg';
+        image_url = existing ? (existing.image_url || '') : '';
       }
 
       const payload = {
