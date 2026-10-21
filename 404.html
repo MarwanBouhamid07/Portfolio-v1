@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Marwan Bouhamid</title>
+
+  <meta name="description" content="The page you're looking for doesn't exist or has been moved.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300f0ff'/><text x='50' y='68' font-size='55' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23050811'>M</text></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .error-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-code {
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 900;
+      font-family: var(--font-code);
+      background: linear-gradient(135deg, var(--accent), var(--accent-purple, #8b5cf6));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .error-title {
+      font-size: var(--fs-2xl);
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    .error-desc {
+      color: var(--text-secondary);
+      font-size: var(--fs-md);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body class="page-404">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="canvas-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Marwan Bouhamid Homepage">
+        <span class="logo-bracket">&lt;</span>MB <span class="logo-dot"></span><span class="logo-bracket">&gt;</span>
+      </a>
+
+      <div class="nav-menu-wrapper" id="primary-nav-menu">
+        <nav class="site-nav" role="navigation" aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li class="nav-item"><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li class="nav-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li class="nav-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-controls">
+          <button class="btn-icon theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark/light mode" title="Toggle theme">
+            <span class="theme-icon"></span>
+          </button>
+          <div class="lang-switcher" role="group" aria-label="Language Selector">
+            <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+            <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+            <button class="lang-btn" data-lang="ar" aria-label="العربية">AR</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="error-section">
+      <div>
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-desc">
+          The page you're looking for doesn't exist, has been moved, or was never here in the first place.
+        </p>
+        <div class="error-actions">
+          <a href="index.html" class="btn btn-primary">
+            <span>← Back to Home</span>
+          </a>
+          <a href="projects.html" class="btn btn-secondary">
+            <span>View Projects</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-copy">
+        &copy; <span id="current-year">2026</span> Marwan Bouhamid. <span data-i18n="footer_rights">All rights reserved.</span>
+        <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" data-i18n="footer_tagline">Designed &amp; coded with precision in Tanger, Morocco.</div>
+      </div>
+      <a href="#main-content" class="back-to-top" data-i18n="footer_back_to_top">
+        <span>Back to top</span> ↑
+      </a>
+    </div>
+  </footer>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/gate.js"></script>
+</body>
+</html>

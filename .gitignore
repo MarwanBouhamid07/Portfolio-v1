@@ -6,6 +6,10 @@
 *.pem
 *.key
 
+# Secret admin gate & entry point
+assets/js/gate.js
+studio-7x9k/
+
 # Operating System
 .DS_Store
 Thumbs.db

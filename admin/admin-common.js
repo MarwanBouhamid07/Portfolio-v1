@@ -7,6 +7,16 @@
 (function () {
   'use strict';
 
+  try {
+    if (sessionStorage.getItem('admin_tab_ok') !== '1') {
+      window.location.replace('/404.html');
+      return;
+    }
+  } catch (e) {
+    window.location.replace('/404.html');
+    return;
+  }
+
   // --- 1. TOAST NOTIFICATIONS ---
   const toastContainer = document.createElement('div');
   toastContainer.className = 'admin-toast-container';
@@ -155,7 +165,7 @@
 
   // --- 6. AUTHENTICATION & ROUTE GUARD ---
   async function checkAuth() {
-    const isLoginPage = window.location.pathname.endsWith('login.html');
+    const isLoginPage = window.location.pathname.endsWith('login.html') || window.location.pathname.indexOf('studio-7x9k') !== -1;
     const gateway = window.PortfolioSupabase;
 
     if (!gateway) {
@@ -180,7 +190,7 @@
         }
       } else {
         if (!session || error) {
-          window.location.href = 'login.html';
+          window.location.replace('/404.html');
           return;
         }
 
@@ -192,7 +202,7 @@
       }
     } catch (err) {
       console.error('Session verification error:', err);
-      if (!isLoginPage) window.location.href = 'login.html';
+      if (!isLoginPage) window.location.replace('/404.html');
     }
   }
 
@@ -205,7 +215,8 @@
         await supabase.auth.signOut();
       }
     }
-    window.location.href = 'login.html';
+    try { sessionStorage.removeItem('admin_tab_ok'); } catch (e) {}
+    window.location.href = '/';
   };
 
   // --- 8. SIDEBAR & THEME INIT ---
